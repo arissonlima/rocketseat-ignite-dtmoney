@@ -4,7 +4,7 @@ import { api } from "../services/api";
 interface Transaction{
   id: number,
   title: string,
-  value: number,
+  amount: number,
   type: string,
   category: string,
   createdAt: string
@@ -27,12 +27,12 @@ export function TransactionsProvider({ children }: TransactionsProviderProps){
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
-    api.get('transactions')
+    api.get('transaction')
       .then(response => setTransactions(response.data.transactions));
   }, []);
 
   async function createTransaction(transactionInput: TransactionInput){
-    const response = await api.post('/transactions', {
+    const response = await api.post('/transaction', {
       ...transactionInput,
       createdAt: new Date(),
     });

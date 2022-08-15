@@ -21,13 +21,13 @@ export function TransactionsTable(){
         <tbody>
           {transactions.map(transaction => {
             return(
-              <tr key={transaction.id}>
+              <tr key={transaction.title}>
                 <td>{transaction.title}</td>
                 <td className={transaction.type}>
                   {new Intl.NumberFormat('pt-BR', {
                     style: 'currency',
                     currency: 'BRL'
-                  }).format(transaction.value)}
+                  }).format(transaction.amount)}
                 </td>
                 <td>{transaction.category}</td>
                 <td>
